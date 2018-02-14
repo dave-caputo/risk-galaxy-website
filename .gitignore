@@ -1,0 +1,13 @@
+db.sqlite3
+__pycache__
+*.pyc
+*.sublime-workspace
+.DS_Store
+*.project
+*.pkl
+*dev_email.py
+rgenv
+zappa_settings.json
+htmlcov
+.cache*
+.coverage
