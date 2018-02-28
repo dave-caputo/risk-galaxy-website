@@ -13,5 +13,18 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings":
+	{
+		"extra_paths":
+		[
+			"/Users/davecaputo/.virtualenvs/rgsite/lib"
+		],
+		"python_interpreter": "/Users/davecaputo/.virtualenvs/rgsite/bin/python",
+		"ignored_packages":
+		[
+			"Vintage",
+			"ESLint-Formatter"
+		],
+	},
 }
