@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
-    console.log('I\'m loaded');
-    $('#fullpage').fullpage();
+    $('#fullpage').fullpage({
+        anchors: ['home', 'product', 'zen', 'investors', 'about'],
+        menu: '.navbar-nav',
+        navigation: true,
+        verticalCentered: false
+    });
 });

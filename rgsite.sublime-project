@@ -5,7 +5,7 @@
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
 			"name": "Anaconda Python Builder",
 			"selector": "source.python",
-			"shell_cmd": "\"python\" -u \"$file\""
+			"shell_cmd": "\"/Users/davecaputo/.virtualenvs/rgsite/bin/python\" -u \"$file\""
 		}
 	],
 	"folders":
@@ -20,11 +20,11 @@
 		[
 			"/Users/davecaputo/.virtualenvs/rgsite/lib"
 		],
-		"python_interpreter": "/Users/davecaputo/.virtualenvs/rgsite/bin/python",
 		"ignored_packages":
 		[
 			"Vintage",
 			"ESLint-Formatter"
 		],
-	},
+		"python_interpreter": "/Users/davecaputo/.virtualenvs/rgsite/bin/python"
+	}
 }

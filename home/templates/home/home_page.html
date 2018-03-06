@@ -1,20 +1,45 @@
 {% extends "base.html" %}
-
-{% load wagtailcore_tags %}
-
+{% load static wagtailcore_tags %}
 {% block body_class %}template-homepage{% endblock %}
-
 {% block content %}
+    <div id="fullpage">
+        <div class="section" id="section_home">
 
 
-<div id="fullpage">
-    <div class="section">
-        {{ page.body|richtext }}
+            <div class="row align-items-center h-100">
+                <div class="col-md-5 offset-md-1">
+                    <div class="jumbotron mt-5">
+                        <div class="container">
+                            <h1 class="brand display-3">Risk Galaxy</h1>
+                            <h2>Enterprise Risk Management without the hassle.</h2>
+                            <p class="lead mt-4">An online solution to manage your organisation's risks in an effective, simple and engaging way.</h4>
+                            <p class="mt-5"><a href="#product" class="btn btn-primary">Learn more</a><button class="btn btn-success ml-1">Get a Lite account</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section_product">
+            <div class="row align-items-center h-75">
+                <div class="col-md-8 ml-auto">
+                    <h4>Our product</h4>
+                    <p>We provide an online solution for Enterprise Risk Management (ERM) that allows organisations to register, assess, monitor and report the risks across locations and hierarchy levels. The objective is to provide the Management, the Board, Shareholders and others with a clear picture of the exposure of existing risks and how they are managed.</p>
+                    <br />
+                    <h4>Why choose us</h4>
+                    <p>Because our solution is especifically designed to save time, money by reducing unnecessary admin burden, while meeting high governance standards to satisfy your board, auditors and shareholders.</p>
+                    <p>Current tools in the market are designed for </p>
+                    <p>Risk Galaxy has been created to help busy employees. Those who already have a large number of day to day responsibilities, and can't allow to waste precious time in bureaucracy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section_zen">
+            {% include 'home/zen.html' %}
+        </div>
+        <div class="section" id="section_investors">Investors</div>
+        <div class="section" id="section_about">About Us</div>
     </div>
-    <div class="section">
-        {{ page.body|richtext }}
-    </div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
-</div>
+    {% include 'home/navbar.html' %}
+{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
 {% endblock %}

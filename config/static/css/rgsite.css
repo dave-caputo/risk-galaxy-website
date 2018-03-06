@@ -1,1 +1,55 @@
-/*hola*/
+.welcome_text {
+    margin-top: 150px;
+}
+/*.section{
+    background-size: cover;
+}*/
+
+.jumbotron {
+    background-color: rgba(67, 67, 214, 0.6);
+    color: white;
+    max-height: 100%;
+}
+.navbar {
+    background-color: transparent;
+    color: white;
+}
+.navbar-brand, .brand {
+    font-family: 'Audiowide', cursive;
+}
+
+#section_home {
+    background-image: url('../img/galaxy004.jpeg');
+    background-size:cover;
+}
+
+/*.badge-primary {
+    background-color: rgba(67, 67, 214, 0.7);
+}
+
+.badge-primary:hover {
+    background-color: rgba(67, 67, 214, 1) !important;
+}
+
+.badge-primary:focus {
+    background-color: #2929bc !important;
+}*/
+
+.nav-item {
+   background-color: rgba(67, 67, 214, 0.8);
+
+}
+.nav-link {
+    color: white;
+    /*padding-right: 30px !important;
+    padding-left: 30px !important;*/
+    min-width: 130px;
+    text-align: center;
+}
+.nav-link.active {
+   background-color: #2929bc !important;
+}
+.nav-link:hover {
+    color: white;
+    background-color: rgba(67, 67, 214, 0.82);
+}
