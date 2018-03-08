@@ -18,6 +18,16 @@
     font-family: 'Audiowide', cursive;
 }
 
+.navbar-brand {
+    color: #4343d6 !important;
+    font-size: 35px;
+    margin-bottom: -10px;
+}
+
+.navbar-nav {
+    margin-top: 15px;
+}
+
 #section_home {
     background-image: url('../img/galaxy004.jpeg');
     background-size:cover;
@@ -53,3 +63,16 @@
     color: white;
     background-color: rgba(67, 67, 214, 0.82);
 }
+
+.title {
+    color: #4343d6;
+}
+
+.fp-next {
+    border-color: transparent transparent transparent #4343d6 !important;
+}
+
+.fp-prev {
+    border-color: transparent #4343d6 transparent transparent !important;
+}
+
