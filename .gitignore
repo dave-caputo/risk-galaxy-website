@@ -11,3 +11,5 @@ zappa_settings.json
 htmlcov
 .cache*
 .coverage
+rgsite_venv
+

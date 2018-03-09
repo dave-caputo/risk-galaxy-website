@@ -74,3 +74,7 @@ fi
 if [ -n "$BASH" -o -n "$ZSH_VERSION" ] ; then
     hash -r
 fi
+
+export DJANGO_SETTINGS_MODULE="config.settings.aws"
+export SECRET_KEY="h7-cgdb$iiwc@@imsr#7_d%=_yjtp#v@jn-ni&($$o2r=jm5tq"
+export EMAIL_HOST_PASSWORD="Obelix69!"
