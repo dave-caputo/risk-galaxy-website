@@ -9,18 +9,11 @@
             <li class="nav-item">
                 <a class="nav-link" data-menuanchor="home" href="#home">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-menuanchor="product" href="#product">Product</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-menuanchor="zen" href="#zen">Principles</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-menuanchor="investors" href="#investors">Investors</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-menuanchor="about" href="#about">About us</a>
-            </li>
+            {% for p in page.get_children  %}
+                <li class="nav-item">
+                    <a class="nav-link" data-menuanchor="{{ p.specific.title|slugify }}" href="#{{ p.specific.title|slugify }}">{{ p.specific.title }}</a>
+                </li>
+            {% endfor %}
             <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
             </li>

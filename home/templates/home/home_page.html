@@ -11,22 +11,33 @@
                             <h1 class="brand display-3">Risk Galaxy</h1>
                             <h2>Enterprise Risk Management without the hassle.</h2>
                             <p class="lead mt-4">An online solution to manage your organisation's risks in an effective, simple and engaging way.</h4>
-                            <p class="mt-5"><a href="#product" class="btn btn-primary">Learn more</a><button class="btn btn-success ml-1">Get a Lite account</button></p>
+                                <p class="mt-5"><a href="#product" class="btn btn-primary">Learn more</a><button class="btn btn-success ml-1">Get a Lite account</button></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section" id="section_product">
-            {% include 'home/product.html' %}
-        </div>
-        <div class="section" id="section_zen">
-            {% include 'home/zen.html' %}
-        </div>
-        <div class="section" id="section_investors">Investors</div>
-        <div class="section" id="section_about">About Us</div>
+            {% for p in page.get_children %}
+                <div class="section">
+                    <div class="row">
+                        {% if p.specific.align == 'cl' %}
+                        <div class="col-md-5 offset-md-1">
+                        {% elif p.specific.align == 'cr' %}
+                        <div class="col-md-5 offset-md-6">
+                        {% endif %}
+                            <h2 class="title">{{ p.specific.title }}</h2>
+                            {{ p.specific.body|richtext }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
     </div>
+
+    <!--page data -->
+    <div class="page_data" data-anchors="{% for p in page.get_children %}{{ p.specific.title|slugify }}{% if not forloop.last %}, {%endif%}{% endfor %}">
     {% include 'home/navbar.html' %}
+    }
+    }
 {% endblock %}
 {% block extra_js %}
     {{ block.super }}

@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var anchors = ('home, ' + $('.page_data').data('anchors')).split(", ");
+
     $('#fullpage').fullpage({
         afterLoad: function(anchorLink, index) {
 
@@ -8,7 +10,7 @@ $(document).ready(function() {
             }
 
         },
-        anchors: ['home', 'product', 'zen', 'investors', 'about'],
+        anchors: anchors,
         menu: '.navbar-nav',
         // navigation: true,
         onLeave: function(index, nextIndex, direction) {
