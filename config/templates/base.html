@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static staticv wagtailuserbar %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -23,8 +23,8 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/rgsite.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v={% staticv 'config/static/css/jquery.fullPage.css' %} ">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/rgsite.css' %}?v={% staticv 'config/static/css/rgsite.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
 
 
@@ -47,8 +47,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script src="{% static 'js/fontawesome-all.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/jquery.fullPage.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/rgsite.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.fullPage.js' %}?v={% staticv 'config/static/js/jquery.fullPage.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/rgsite.js' %}?v={% staticv 'config/static/js/rgsite.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
