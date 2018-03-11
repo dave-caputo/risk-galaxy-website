@@ -8,8 +8,9 @@ from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel
 
 class HomePage(Page):
     body = RichTextField(blank=True)
-
+    motto = models.CharField(max_length=255, default='')
     content_panels = Page.content_panels + [
+        FieldPanel('motto'),
         FieldPanel('body', classname='full'),
     ]
 

@@ -1,9 +1,8 @@
-.welcome_text {
-    margin-top: 150px;
-}
-/*.section{
-    background-size: cover;
-}*/
+.no-padding {
+    padding: 0px;
+    margin-right:auto;
+    margin-left:auto;
+ }
 
 .jumbotron {
     background-color: rgba(67, 67, 214, 0.6);
@@ -18,15 +17,14 @@
     font-family: 'Audiowide', cursive;
 }
 
-.navbar-brand {
+.navbar-brand, .text-galaxy {
     color: #4343d6 !important;
-    font-size: 35px;
-    margin-bottom: -10px;
 }
 
-.navbar-nav {
-    margin-top: 15px;
+.text-transparent {
+    color: transparent !important;
 }
+
 
 #section_home {
     background-image: url('../img/galaxy004.jpeg');
@@ -45,34 +43,44 @@
     background-color: #2929bc !important;
 }*/
 
-.nav-item {
-   background-color: rgba(67, 67, 214, 0.8);
+.nav-pills .nav-link {
+    border-radius: 40px !important;
+    /*margin-bottom: 5px !important;*/
+}
 
+.nav-item {
+   background-color: #6d6ddf;
+   border-radius: 40px !important;
+   margin-left: 5px;
+   margin-bottom: 1px !important;
 }
 .nav-link {
     color: white;
-    /*padding-right: 30px !important;
-    padding-left: 30px !important;*/
     min-width: 130px;
     text-align: center;
 }
 .nav-link.active {
    background-color: #2929bc !important;
 }
+
 .nav-link:hover {
     color: white;
-    background-color: rgba(67, 67, 214, 0.82);
+    background-color: #4343d6;
 }
 
 .title {
     color: #4343d6;
 }
 
-.fp-next {
-    border-color: transparent transparent transparent #4343d6 !important;
+.fp-controlArrow.fp-next {
+    right: 15px;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent transparent transparent #4343d6;
 }
 
-.fp-prev {
-    border-color: transparent #4343d6 transparent transparent !important;
+.fp-controlArrow.fp-prev {
+    left: 15px;
+    width: 0;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #4343d6 transparent transparent;
 }
-

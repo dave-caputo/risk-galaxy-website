@@ -3,16 +3,18 @@
 {% block body_class %}template-homepage{% endblock %}
 {% block content %}
     <div id="fullpage">
+
+        <!-- Home Section -->
         <div class="section" id="section_home">
             <div class="row align-items-center h-100">
                 <div class="col-md-7 offset-md-1">
                     <div class="jumbotron mt-5">
                         <div class="container">
-                            <h1 class="brand display-3">Risk Galaxy</h1>
-                            <h2>Enterprise Risk Management without the hassle.</h2>
-                            <h4 class="lead mt-4">An online solution to manage your organisation's risks in an effective, simple and engaging way.</h4>
+                            <h1 class="brand">{{ page.title }}</h1>
+                            <h2>{{ page.motto }}</h2>
+                            {{ page.body|richtext }}
                             <p class="mt-5">
-                                <a href="#product" class="btn btn-primary">Learn more</a>
+                                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
                                 <button class="btn btn-success ml-1">Get a Lite account</button>
                             </p>
                         </div>
@@ -21,7 +23,7 @@
             </div>
         </div>
 
-        <!--Sections -->
+        <!--Custom sections -->
     {% for section in page.get_children %}
         <div class="section">
         {% if section.get_children %}
@@ -29,16 +31,18 @@
             <!-- Section slides -->
             {% for slide in section.get_children %}
 
-            <div class="slide" data-anchor="slide{{ forloop.counter }}">
-                <div class="row">
-                {% if slide.specific.align == 'cr' %}
-                    <div class="col-md-5 offset-md-6">
-                {% else %}
-                    {# default is align='cl' #}
-                    <div class="col-md-5 offset-md-1">
-                {% endif %}
-                        <h2 class="title">{{ slide.specific.title }}</h2>
-                        {{ slide.specific.body|richtext }}
+            <div class="container">
+                <div class="slide" data-anchor="slide{{ forloop.counter }}">
+                    <div class="row">
+                    {% if slide.specific.align == 'cr' %}
+                        <div class="col-md-5 offset-md-6">
+                    {% else %}
+                        {# default is align='cl' #}
+                        <div class="col-md-5 offset-md-1">
+                    {% endif %}
+                            <h2 class="title">{{ slide.specific.title }}</h2>
+                            {{ slide.specific.body|richtext }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,21 +50,24 @@
             {% endfor %}
 
         {% else %}
-            <div class="row">
-            {% if section.specific.align == 'cr' %}
-                <div class="col-md-5 offset-md-6">
-            {% else %}
-                {# default is align='cl' #}
-                <div class="col-md-5 offset-md-1">
-            {% endif %}
-                    <h2 class="title">{{ section.specific.title }}</h2>
-                    {{ section.specific.body|richtext }}
+            <div class="container">
+                <div class="row">
+                {% if section.specific.align == 'cr' %}
+                    <div class="col-md-5 offset-md-6">
+                {% else %}
+                    {# default is align='cl' #}
+                    <div class="col-md-5 offset-md-1">
+                {% endif %}
+                        <h2 class="title">{{ section.specific.title }}</h2>
+                        {{ section.specific.body|richtext }}
+                    </div>
                 </div>
             </div>
         {% endif %}
 
         </div><!-- .section -->
     {% endfor %}
+
     </div><!-- #fullpage -->
 
     <!-- Page data -->

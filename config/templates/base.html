@@ -34,10 +34,10 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        <div class="container-fluid">
-        {% wagtailuserbar %}
+        <div class="container-fluid no-padding">
+            {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
 
         </div>
 
