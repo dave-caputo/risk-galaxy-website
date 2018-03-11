@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sectionpage',
             name='position',
-            field=models.IntegerField(default=home.models.new_position),
+            field=models.IntegerField(),
         ),
     ]
