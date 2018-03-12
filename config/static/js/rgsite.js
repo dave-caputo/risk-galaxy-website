@@ -12,6 +12,7 @@ $(document).ready(function() {
                     .removeClass('text-white')
                     .addClass('text-galaxy');
             }
+            $('.navbar-collapse').collapse('hide');
         },
         anchors: anchors,
         loopHorizontal: false,
@@ -34,4 +35,8 @@ $(document).ready(function() {
         verticalCentered: true,
     });
 
+});
+
+$(document).on('click', '.dismiss_nav', function(event) {
+    $('.navbar-collapse').collapse('hide');
 });

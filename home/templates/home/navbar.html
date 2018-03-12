@@ -1,11 +1,12 @@
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg">
+<nav class="navbar navbar-expand-lg fixed-top">
     <a class="navbar-brand ml-3 text-transparent" href="#home">Risk Galaxy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleMenu" aria-controls="navbarToggleMenu" aria-expanded="false" aria-label="Toggle navigation">
     <i class="text-white fas fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse fade show position-relative" id="navbarToggleMenu">
         <ul class="navbar-nav ml-auto nav-pills mr-3">
+            <li class="text-right text-galaxy dismiss_nav mt-1"><i class="fas fa-window-close fa-2x"></i></li>
             <li class="nav-item home-item">
                 <a class="nav-link" data-menuanchor="home" href="#home">Home</a>
             </li>
@@ -14,11 +15,7 @@
                     <a class="nav-link" data-menuanchor="{{ p.specific.title|slugify }}" href="#{{ p.specific.title|slugify }}">{{ p.specific.title }}</a>
                 </li>
             {% endfor %}
-            <li class="nav-item">
-                {% comment %}
-                    <a class="nav-link" href="#">Login</a>
-                {% endcomment %}
-            </li>
+
         </ul>
     </div>
 </nav>

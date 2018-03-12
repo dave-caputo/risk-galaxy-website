@@ -2,6 +2,11 @@
 {% load static wagtailcore_tags %}
 {% block body_class %}template-homepage{% endblock %}
 {% block content %}
+
+<!-- Navbar -->
+{% include 'home/navbar.html' %}
+
+<div id="fullpage_wrapper position-relative">
     <div id="fullpage">
 
         <!-- Home Section -->
@@ -89,11 +94,10 @@
 
     </div><!-- #fullpage -->
 
+</div><!-- fullpage wrapper -->
+
     <!-- Page data -->
     <div class="page_data" data-anchors="{% for section in page.get_children %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endfor %}"></div>
-
-    <!-- Navbar -->
-    {% include 'home/navbar.html' %}
 
 {% endblock %}
 
