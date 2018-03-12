@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $('body').show();
+
 
     var anchors = ('home, ' + $('.page_data').data('anchors')).split(", ");
 
@@ -34,6 +36,8 @@ $(document).ready(function() {
         slidesNavPosition: 'bottom',
         verticalCentered: true,
     });
+
+
 
 });
 
