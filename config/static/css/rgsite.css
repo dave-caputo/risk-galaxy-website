@@ -84,3 +84,10 @@
     border-width: 15px 15px 15px 0;
     border-color: transparent #4343d6 transparent transparent;
 }
+
+.bg-jumbotron {
+    background-color: rgba(67, 67, 214, 0.6);
+    padding-top: 15px;
+    padding-bottom: 5px;
+    color: white;
+}

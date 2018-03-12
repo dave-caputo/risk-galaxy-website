@@ -8,17 +8,36 @@
         <div class="section" id="section_home">
             <div class="row align-items-center h-100">
                 <div class="col-md-7 offset-md-1">
-                    <div class="jumbotron mt-5">
+                    <div class="jumbotron d-none d-sm-block">
                         <div class="container">
-                            <h1 class="brand">{{ page.title }}</h1>
-                            <h2>{{ page.motto }}</h2>
+                            <h1 class="brand  d-none d-sm-block">{{ page.title }}</h1>
+                            <h3 class="motto d-none d-sm-block">{{ page.motto }}</h3>
                             {{ page.body|richtext }}
-                            <p class="mt-5">
+                            <p>
                                 <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                                <button class="btn btn-success ml-1">Get a Lite account</button>
+                                {% comment %}
+                                    <button class="btn btn-success ml-1">Get a Lite account</button>
+                                {% endcomment %}
                             </p>
                         </div>
                     </div>
+
+                    <!-- shown only in xs -->
+                    <div class="d-block d-sm-none">
+                        <div class="container bg-jumbotron">
+                            <h3 class="brand">{{ page.title }}</h3>
+                            <h4 class="motto">{{ page.motto }}</h4>
+                            {{ page.body|richtext }}
+                            <p>
+                                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
+                                {% comment %}
+                                    <button class="btn btn-success ml-1">Get a Lite account</button>
+                                {% endcomment %}
+                            </p>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
