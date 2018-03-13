@@ -59,10 +59,10 @@ body {
 
 }
 
-/*.nav-collapse {
+.nav-collapse {
     position: absolute !important;
     bottom: 20px !important;
-}*/
+}
 
 
 .navbar-collapse.show>ul>.nav-item,
@@ -96,7 +96,7 @@ body {
 
 .nav-link:hover {
     color: white;
-    background-color: #4343d6;
+    background-color: #4343d6 !important;
 }
 
 .title {

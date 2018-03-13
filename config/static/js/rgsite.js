@@ -36,9 +36,6 @@ $(document).ready(function() {
         slidesNavPosition: 'bottom',
         verticalCentered: true,
     });
-
-
-
 });
 
 $(document).on('click', '.dismiss_nav', function(event) {
