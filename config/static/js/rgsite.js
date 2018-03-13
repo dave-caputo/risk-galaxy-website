@@ -41,3 +41,11 @@ $(document).ready(function() {
 $(document).on('click', '.dismiss_nav', function(event) {
     $('.navbar-collapse').collapse('hide');
 });
+
+$('.navbar-collapse').on('show.bs.collapse', function(event) {
+    $(this).fadeIn('fast');
+});
+
+$('.navbar-collapse').on('hide.bs.collapse', function(event) {
+    $(this).fadeOut();
+});
