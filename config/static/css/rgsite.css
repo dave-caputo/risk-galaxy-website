@@ -137,3 +137,11 @@ body {
     top: 90%;
     z-index: 1000;
 }
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: #4343d6;
+}
+
+#fp-nav {
+    top: 90% !important;
+}

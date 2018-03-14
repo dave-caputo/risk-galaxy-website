@@ -13,12 +13,16 @@ $(document).ready(function() {
                 $('.navbar-toggler svg')
                     .removeClass('text-white')
                     .addClass('text-galaxy');
+            } else {
+                $('#fp-nav ul li a span').addClass('bg-white');
             }
             $('.navbar-collapse').collapse('hide');
         },
         anchors: anchors,
         loopHorizontal: false,
         menu: '.navbar-nav',
+        navigation: true,
+        navigationPosition: 'right',
         onLeave: function(index, nextIndex, direction) {
             var leavingSection = $(this);
 
@@ -28,14 +32,20 @@ $(document).ready(function() {
                 $('.navbar-toggler svg')
                     .removeClass('text-galaxy')
                     .addClass('text-white');
+            } else {
+                $('#fp-nav ul li a span').removeClass('bg-white');
             }
         },
-        navigationTooltips: ['firstSlide', 'secondSlide'],
         scrollHorizontally: true,
-        slidesNavigation: false,
+        slidesNavigation: true,
         slidesNavPosition: 'bottom',
         verticalCentered: true,
     });
+
+    $('#fp-nav ul li a span').addClass('bg-white');
+
+    // Hide slide navigation on smaller viewports...
+    $('.fp-slidesNav').addClass('d-lg-none');
 });
 
 $(document).on('click', '.dismiss_nav', function(event) {
