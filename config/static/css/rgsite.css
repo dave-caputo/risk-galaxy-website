@@ -9,7 +9,7 @@ body {
  }
 
 .jumbotron {
-    background-color: rgba(67, 67, 214, 0.6);
+    background-color: rgba(67, 67, 214, 0.8);
     color: white;
     max-height: 100%;
 }
@@ -31,7 +31,8 @@ body {
 
 
 #section_home {
-    background-image: url('../img/galaxy004.jpeg');
+    /* https://lyshastra.deviantart.com/art/Free-Space-Galaxy-Texture-435789256 */
+    background-image: url('../img/galaxy005.jpg');
     background-size:cover;
 }
 
@@ -127,4 +128,12 @@ body {
     position: relative;
     top: -27px;
     left: 14px;
+}
+
+/* SLIDE MENU */
+
+.slide_menu {
+    position: relative;
+    top: 90%;
+    z-index: 1000;
 }
