@@ -18,6 +18,14 @@ $(document).ready(function() {
             }
             $('.navbar-collapse').collapse('hide');
         },
+        onSlideLeave: function(
+            anchorLink, index, slideIndex, direction, nextSlideIndex) {
+
+            var slideNum = nextSlideIndex + 1
+
+            $('.nav .nav-link').removeClass('active');
+            $('#id_slide' + slideNum).addClass('active');
+        },
         anchors: anchors,
         loopHorizontal: false,
         menu: '.navbar-nav',
@@ -44,8 +52,11 @@ $(document).ready(function() {
 
     $('#fp-nav ul li a span').addClass('bg-white');
 
-    // Hide slide navigation on smaller viewports...
+    // Show slide navigation on smaller viewports...
     $('.fp-slidesNav').addClass('d-lg-none');
+
+    // Hide slide arrows on smaller viewports...
+    $('.fp-controlArrow').addClass('d-none d-lg-block');
 });
 
 $(document).on('click', '.dismiss_nav', function(event) {
