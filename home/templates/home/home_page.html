@@ -1,12 +1,15 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static staticv wagtailcore_tags %}
 {% block body_class %}template-homepage{% endblock %}
+
+
 {% block content %}
 
 <!-- Navbar -->
 {% include 'home/navbar.html' %}
 
 <div id="fullpage_wrapper position-relative">
+
     <div id="fullpage">
 
         <!-- Home Section -->
@@ -20,9 +23,7 @@
                             {{ page.body|richtext }}
                             <p>
                                 <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                                {% comment %}
-                                    <button class="btn btn-success ml-1">Get a Lite account</button>
-                                {% endcomment %}
+                                <button class="btn btn-success demo_request_get_button">Request a demo</button>
                             </p>
                         </div>
                     </div>
@@ -35,9 +36,6 @@
                             {{ page.body|richtext }}
                             <p>
                                 <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                                {% comment %}
-                                    <button class="btn btn-success ml-1">Get a Lite account</button>
-                                {% endcomment %}
                             </p>
                         </div>
                     </div>
@@ -108,11 +106,31 @@
 
 </div><!-- fullpage wrapper -->
 
-    <!-- Page data -->
-    <div class="page_data" data-anchors="{% for section in page.get_children %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endfor %}"></div>
+<!-- Modal -->
+<div class="modal fade" id="homeModalCenter" tabindex="-1" role="dialog" aria-labelledby="homeModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="homeModalLongTitle">Request a demo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary demo_request_post_btn">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page data -->
+<div class="page_data" data-anchors="{% for section in page.get_children %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endfor %}"></div>
 
 {% endblock %}
 
 {% block extra_js %}
     {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/phone_codes.js' %}?v={% staticv 'clients/static/js/phone_codes.js' %}"></script>
 {% endblock %}

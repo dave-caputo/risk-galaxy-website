@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -20,11 +18,4 @@ DATABASES = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h6(wigfx9ca@8_460(rr3hu^sk&%w)=3ut@e(e$2_(#)*o94)q'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-try:
-    from .local import *
-except ImportError:
-    pass

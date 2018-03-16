@@ -22,10 +22,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/countrySelect.min.css' %}?v={% staticv 'clients/static/css/countrySelect.min.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v={% staticv 'config/static/css/jquery.fullPage.css' %} ">
         <link rel="stylesheet" type="text/css" href="{% static 'css/rgsite.css' %}?v={% staticv 'config/static/css/rgsite.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+
+
 
 
         {% block extra_css %}
@@ -48,8 +51,10 @@
 
         <script src="{% static 'js/fontawesome-all.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery.fullPage.js' %}?v={% staticv 'config/static/js/jquery.fullPage.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/countrySelect.min.js' %}?v={% staticv 'clients/static/js/countrySelect.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery.fullpage.extensions.min.js' %}?v={% staticv 'config/static/js/jquery.fullpage.extensions.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/rgsite.js' %}?v={% staticv 'config/static/js/rgsite.js' %}"></script>
+
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
