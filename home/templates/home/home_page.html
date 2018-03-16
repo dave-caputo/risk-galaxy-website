@@ -45,61 +45,80 @@
             </div>
         </div>
 
-        <!--Custom sections -->
-    {% for section in page.get_children %}
+    <!-- Additional sections -->
+    {% for section in homesections %}
+        {% with section=section.specific %}
         <div class="section">
+
+        {# SECTIONS WITH NO SLIDES #}
+
+        {% if not section.get_children %}
+
+            <div class="row">
+
+            {% if section.align == 'cr' %}
+                <div class="col-md-5 offset-md-6">
+            {% endif %}
+
+            {% if section.align == 'cl' %}
+                <div class="col-md-5 offset-md-1">
+            {% endif %}
+
+                    <h2 class="title">{{ section.title }}</h2>
+                    {{ section.body|richtext }}
+                </div>
+            </div>
+        {% endif %}
+
+        {#  SECTIONS WITH SLIDES #}
+
         {% if section.get_children %}
 
             <!-- Slide navigation -->
             <div class="slide_menu d-none d-lg-block">
                 <ul class="nav justify-content-center" role="tablist">
                 {% for slide in section.get_children %}
+                    {% with slide=slide.specific %}
+
                     <li class="nav-item color-galaxy">
                         <a class="nav-link {% if forloop.first %}active{% endif %}" id="id_slide{{ forloop.counter }}" data-menuanchor="{{section.title|slugify}}/slide{{ forloop.counter }}" href="#{{section.title|slugify}}/slide{{ forloop.counter }}">{{ slide.title }}</a>
                     </li>
+
+                    {% endwith %}
                 {% endfor %}
                 </ul>
             </div>
 
-
             <!-- Slides -->
             {% for slide in section.get_children %}
+                {% with slide=slide.specific %}
 
-            <div class="container">
                 <div class="slide" data-anchor="slide{{ forloop.counter }}">
                     <div class="row">
-                    {% if slide.specific.align == 'cr' %}
+
+                    {% if slide.align == 'cr' %}
                         <div class="col-md-5 offset-md-6">
-                    {% else %}
-                        {# default is align='cl' #}
+                    {% endif %}
+
+                    {% if slide.align == 'cl' %}
                         <div class="col-md-5 offset-md-1">
                     {% endif %}
-                            <h2 class="title">{{ slide.specific.title }}</h2>
-                            {{ slide.specific.body|richtext }}
+
+                            <h2 class="title">{{ slide.title }}</h2>
+                            {{ slide.body|richtext }}
                         </div>
                     </div>
                 </div>
-            </div>
 
+                {% endwith %}
             {% endfor %}
 
-        {% else %}
-            <div class="container">
-                <div class="row">
-                {% if section.specific.align == 'cr' %}
-                    <div class="col-md-5 offset-md-6">
-                {% else %}
-                    {# default is align='cl' #}
-                    <div class="col-md-5 offset-md-1">
-                {% endif %}
-                        <h2 class="title">{{ section.specific.title }}</h2>
-                        {{ section.specific.body|richtext }}
-                    </div>
-                </div>
-            </div>
         {% endif %}
 
         </div><!-- .section -->
+
+
+        {% endwith %}
     {% endfor %}
 
     </div><!-- #fullpage -->

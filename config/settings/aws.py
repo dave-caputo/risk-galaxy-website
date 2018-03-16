@@ -38,7 +38,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     # 'CacheControl': 'max-age=94608000',
 
     # Show correctly Wagtail static items...
-    'Access-Control-Allow-Origin': '*'
+    # 'Access-Control-Allow-Origin': '*'
 }
 
 # SECURITY WARNING: keep the secret key used in production secret!

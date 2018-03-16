@@ -48,7 +48,7 @@ $(document).ready(function() {
         scrollHorizontally: true,
         slidesNavigation: true,
         slidesNavPosition: 'bottom',
-        verticalCentered: true,
+        verticalCentered: false,
     });
 
     $('#fp-nav ul li a span').addClass('bg-white');

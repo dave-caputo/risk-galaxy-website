@@ -14,6 +14,14 @@ class HomePage(Page):
         FieldPanel('body', classname='full'),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        context['homesections'] = self.get_children() \
+            .specific().live()  # TO DO: Customise ordering.
+
+        return context
+
 
 class SectionPage(Page):
     CL = 'cl'
@@ -38,9 +46,6 @@ class SectionPage(Page):
     ]
 
     parent_page_types = [HomePage]
-
-    class Meta:
-        ordering = ['position']
 
 
 class SlidePage(SectionPage):

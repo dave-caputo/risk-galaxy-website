@@ -162,3 +162,11 @@ body {
     display: block;
 }
 
+/* Section container */
+
+.fp-section {
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
