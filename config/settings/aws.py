@@ -32,7 +32,8 @@ DATABASES = {
 AWS_STORAGE_BUCKET_NAME = 'zappa-static-rgsite'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 AWS_S3_OBJECT_PARAMETERS = {
     # 'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     # 'CacheControl': 'max-age=94608000',
@@ -40,6 +41,10 @@ AWS_S3_OBJECT_PARAMETERS = {
     # Show correctly Wagtail static items...
     # 'Access-Control-Allow-Origin': '*'
 }
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
