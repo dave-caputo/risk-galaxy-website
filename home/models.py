@@ -5,7 +5,12 @@ from modelcluster.fields import ParentalKey
 
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, InlinePanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    FieldRowPanel,
+    InlinePanel,
+    PageChooserPanel
+)
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
@@ -15,15 +20,21 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('motto'),
         FieldPanel('body', classname='full'),
+        InlinePanel('home_sections', label="Home page sections"),
     ]
 
-    def get_context(self, request):
-        context = super().get_context(request)
 
-        context['homesections'] = self.get_children() \
-            .specific().live()  # TO DO: Customise ordering.
+class HomePageSections(Orderable):
+    page = ParentalKey(HomePage, on_delete=models.CASCADE,
+                       related_name='home_sections')
 
-        return context
+    section = models.ForeignKey(
+        'home.SectionPage', on_delete=models.CASCADE, related_name='+'
+    )
+
+    content_panels = [
+        PageChooserPanel('section')
+    ]
 
 
 class SectionPage(Page):

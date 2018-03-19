@@ -13,10 +13,12 @@
             <li class="nav-item home-item">
                 <a class="nav-link" data-menuanchor="home" href="#home">Home</a>
             </li>
-            {% for p in page.get_children  %}
+            {% for item in page.home_sections.all %}
+                {% with section=item.section.specific %}
                 <li class="nav-item">
-                    <a class="nav-link" data-menuanchor="{{ p.specific.title|slugify }}" href="#{{ p.specific.title|slugify }}">{{ p.specific.title }}</a>
+                    <a class="nav-link" data-menuanchor="{{ section.title|slugify }}" href="#{{ section.title|slugify }}">{{ section.title }}</a>
                 </li>
+                {% endwith %}
             {% endfor %}
         </ul>
     </div>

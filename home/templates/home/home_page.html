@@ -28,11 +28,14 @@
     <!-- End of home section -->
 
     <!-- Extra sections -->
-    {% for section in homesections %}{% with section=section.specific %}
+    {% for item in page.home_sections.all %}
+        {% with section=item.section %}
 
         <!-- Section start -->
         <div class="section">
             <div class="row section_row">
+
+            {{ section.section }}
 
             {% if not section.get_children %}
 
@@ -145,7 +148,8 @@
         </div>
         <!-- End of section -->
 
-    {% endwith %}{% endfor %}
+        {% endwith %}
+    {% endfor %}
     <!-- End of extra sections -->
 
 </div>
@@ -283,7 +287,7 @@
 </div>
 
 <!-- Page data -->
-<div class="page_data" data-anchors="{% for section in page.get_children %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endfor %}"></div>
+<div class="page_data" data-anchors="{% for item in page.home_sections.all %}{% with section=item.section %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endwith %}{% endfor %}"></div>
 
 {% endblock %}
 
