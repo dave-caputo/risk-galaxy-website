@@ -1,9 +1,12 @@
 from django import forms
 from django.db import models
 
-from wagtail.core.models import Page, PageRevision
+from modelcluster.fields import ParentalKey
+
+from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel
+from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, InlinePanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class HomePage(Page):
@@ -42,10 +45,25 @@ class SectionPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('align'),
         FieldPanel('position'),
-        FieldPanel('body', classname='full')
+        FieldPanel('body', classname='full'),
+        InlinePanel('gallery_images', label="Gallery images"),
     ]
 
     parent_page_types = [HomePage]
+
+
+class SectionPageGalleryImage(Orderable):
+    page = ParentalKey(SectionPage, on_delete=models.CASCADE,
+                       related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]
 
 
 class SlidePage(SectionPage):

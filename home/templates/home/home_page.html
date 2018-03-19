@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static staticv wagtailcore_tags %}
+{% load static staticv wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-homepage{% endblock %}
 
 
@@ -7,66 +7,202 @@
 
 <!-- Navbar -->
 {% include 'home/navbar.html' %}
+<!-- End of navbar -->
 
-<div id="fullpage_wrapper position-relative">
+<!-- Page sections -->
+<div id="fullpage">
 
-    <div id="fullpage">
+    <!-- Home Section -->
+    <div class="section" id="section_home">
+        <div class="home_image_div"></div>
+        <div class="home_content_div">
+            <h1 class="home_brand">{{ page.title }}</h1>
+            <h3 class="home_motto">{{ page.motto }}</h3>
+            {{ page.body|richtext }}
+            <p class="mt-5">
+                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary mr-1">Learn more</a>
+                <button class="btn btn-success demo_request_get_button">Request a demo</button>
+            </p>
+        </div>
+    </div>
+    <!-- End of home section -->
 
-        <!-- Home Section -->
-        <div class="section" id="section_home">
-            <div class="row align-items-center h-100">
-                <div class="col-md-5 offset-md-1">
-                    <div class="jumbotron d-none d-sm-block">
-                        <div class="container">
-                            <h1 class="brand  d-none d-sm-block">{{ page.title }}</h1>
-                            <h3 class="motto d-none d-sm-block">{{ page.motto }}</h3>
-                            {{ page.body|richtext }}
-                            <p>
-                                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                                <button class="btn btn-success demo_request_get_button">Request a demo</button>
-                            </p>
+    <!-- Extra sections -->
+    {% for section in homesections %}{% with section=section.specific %}
+
+        <!-- Section start -->
+        <div class="section">
+            <div class="row section_row">
+
+            {% if not section.get_children %}
+
+                {# SECTIONS NOT CONTAINING SLIDES #}
+
+                {% if section.align == 'cr' %}
+
+                    <!-- right aligned section -->
+                    {% image section.gallery_images.first.image fill-700x800 as section_image %}
+                    <div class="col-md-6 img_col_left" style="background-image: url({{ section_image.url }});">
+                    </div>
+                    <div class="col-md-5 content_col_right">
+                        <div class="page_content">
+                            <h2 class="title text-galaxy">{{ section.title }}</h2>
+                            {{ section.body|richtext }}
                         </div>
                     </div>
+                    <!-- End of right aligned section -->
 
-                    <!-- shown only in xs -->
-                    <div class="d-block d-sm-none">
-                        <div class="container bg-jumbotron">
-                            <h3 class="brand">{{ page.title }}</h3>
-                            <h4 class="motto">{{ page.motto }}</h4>
-                            {{ page.body|richtext }}
-                            <p>
-                                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                            </p>
+                {% endif %}
+
+                {% if section.align == 'cl' %}
+                    <!-- Left aligned section -->
+                    <div class="col-md-5 offset-md-1 content_col_left">
+                        <div class="page_content">
+                            <h2 class="title text-galaxy">{{ section.title }}</h2>
+                            {{ section.body|richtext }}
                         </div>
                     </div>
+                    {% image section.gallery_images.first.image fill-700x800 as section_image %}
+                    <div class="col-md-6 img_col_right" style="background-image: url({{ section_image.url }});">
+                    </div>
+                    <!-- End of left aligned section -->
+                {% endif %}
 
+            {% else %}
 
+                {# SECTIONS CONTAINING SLIDES #}
+
+                <!-- Slide arrows -->
+                {# <div class="slide_arrow slide_prev"><i class="fas fa-chevron-circle-left fa-2x"></i></div> #}
+                {# <div class="slide_arrow slide_next"><i class="fas fa-chevron-circle-right fa-2x"></i></div> #}
+                <!-- End of slide arrows -->
+
+                <!-- Slide menu -->
+                <div class="slide_menu d-none d-lg-block">
+                    <ul class="nav justify-content-center" role="tablist">
+
+                    {% for slide in section.get_children %}
+                        {% with slide=slide.specific %}
+
+                        <li class="nav-item color-galaxy">
+                            <a class="nav-link {% if forloop.first %}active{% endif %}" id="id_slide{{ forloop.counter }}" data-menuanchor="{{section.title|slugify}}/slide{{ forloop.counter }}" href="#{{section.title|slugify}}/slide{{ forloop.counter }}">{{ slide.title }}</a>
+                        </li>
+
+                        {% endwith %}
+                    {% endfor %}
+                    </ul>
                 </div>
+                <!-- End of slide menu -->
+
+                <!-- Slides -->
+                {% for slide in section.get_children %}
+                    {% with slide=slide.specific %}
+
+                    <div class="slide" data-anchor="slide{{ forloop.counter }}">
+
+                        <div class="row slide_row">
+
+                        {% if slide.align == 'cr' %}
+
+                            <!-- right aligned slide -->
+                            {% image slide.gallery_images.first.image fill-700x800 as slide_image %}
+                            <div class="col-md-5 offset-md-1 img_slide_left" style="background-image: url({{ slide_image.url }});">
+                            </div>
+                            <div class="col-md-5 content_slide_right">
+                                <div class="page_content">
+                                    <h2 class="title text-galaxy">{{ section.title }}  &raquo; {{ slide.title }}</h2>
+                                    {{ slide.body|richtext }}
+                                </div>
+                            </div>
+                            <!-- End of right aligned slide -->
+
+                        {% endif %}
+
+                        {% if slide.align == 'cl' %}
+                            <!-- Left aligned slide -->
+                            <div class="col-md-5 offset-md-1 content_slide_left">
+                                <div class="page_content">
+                                    <h2 class="title text-galaxy">{{ section.title }} &raquo; {{ slide.title }}</h2>
+                                    {{ slide.body|richtext }}
+                                </div>
+                            </div>
+                            {% image slide.gallery_images.first.image fill-700x800 as slide_image %}
+                            <div class="col-md-5 img_slide_right" style="background-image: url({{ slide_image.url }});">
+                            </div>
+                            <!-- End of left aligned slide -->
+                        {% endif %}
+
+                    </div>
+                    </div>
+
+                    {% endwith %}
+                {% endfor %}
+                <!-- End of slides -->
+
+            {% endif %}
+
             </div>
         </div>
+        <!-- End of section -->
 
-    <!-- Additional sections -->
+    {% endwith %}{% endfor %}
+    <!-- End of extra sections -->
+
+</div>
+<!-- End of page sections -->
+
+    {% comment %}
+
+    <h1 class="brand  d-none d-sm-block">{{ page.title }}</h1>
+            <h3 class="motto d-none d-sm-block">{{ page.motto }}</h3>
+            {{ page.body|richtext }}
+            <p>
+                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
+                <button class="btn btn-success demo_request_get_button">Request a demo</button>
+            </p>
+
+
+
+
+
+    <!-- Extra sections -->
     {% for section in homesections %}
         {% with section=section.specific %}
+
+        <!-- Section start -->
         <div class="section">
 
         {# SECTIONS WITH NO SLIDES #}
 
         {% if not section.get_children %}
 
-            <div class="row">
+            <div class="row page_row">
 
             {% if section.align == 'cr' %}
-                <div class="col-md-5 offset-md-6">
-            {% endif %}
-
-            {% if section.align == 'cl' %}
                 <div class="col-md-5 offset-md-1">
-            {% endif %}
-
+                    hola
+                    {{ section.gallery_images.first }}
+                </div>
+                <div class="col-md-5 offset-md-6">
                     <h2 class="title">{{ section.title }}</h2>
                     {{ section.body|richtext }}
                 </div>
+
+            {% endif %}
+
+            {% if section.align == 'cl' %}
+                <div class="col-md-5 offset-md-1 content_col">
+                    <div class="page_content">
+                        <h2 class="title">{{ section.title }}</h2>
+                        {{ section.body|richtext }}
+                    </div>
+                </div>
+                <div class="col-md-5 img_col">
+                    {% image section.gallery_images.first.image fill-600x700 as section_image %}
+                    <div class="page_image" style="background-image: url({{ section_image.url }});">Hello</div>
+                </div>
+            {% endif %}
+
             </div>
         {% endif %}
 
@@ -115,16 +251,18 @@
 
         {% endif %}
 
-        </div><!-- .section -->
+        </div>
+        <!-- End of section -->
 
 
         {% endwith %}
     {% endfor %}
+    <!-- End of extra sections -->
 
-    </div><!-- #fullpage -->
+</div>
+<!-- End of page sections -->
 
-</div><!-- fullpage wrapper -->
-
+{% endcomment %}
 <!-- Modal -->
 <div class="modal fade" id="homeModalCenter" tabindex="-1" role="dialog" aria-labelledby="homeModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
