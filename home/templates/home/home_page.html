@@ -21,7 +21,7 @@
             <h3 class="home_motto">{{ page.motto }}</h3>
             {{ page.body|richtext }}
             <p class="mt-5">
-                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary mr-1">Learn more</a>
+                <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
                 <button class="btn btn-success demo_request_get_button">Request a demo</button>
             </p>
         </div>
@@ -76,11 +76,6 @@
 
                 {# SECTIONS CONTAINING SLIDES #}
 
-                <!-- Slide arrows -->
-                {# <div class="slide_arrow slide_prev"><i class="fas fa-chevron-circle-left fa-2x"></i></div> #}
-                {# <div class="slide_arrow slide_next"><i class="fas fa-chevron-circle-right fa-2x"></i></div> #}
-                <!-- End of slide arrows -->
-
                 <!-- Slide menu -->
                 <div class="slide_menu d-none d-lg-block">
                     <ul class="nav justify-content-center" role="tablist">
@@ -89,7 +84,7 @@
                         {% with slide=slide.specific %}
 
                         <li class="nav-item color-galaxy">
-                            <a class="nav-link {% if forloop.first %}active{% endif %}" id="id_slide{{ forloop.counter }}" data-menuanchor="{{section.title|slugify}}/slide{{ forloop.counter }}" href="#{{section.title|slugify}}/slide{{ forloop.counter }}">{{ slide.title }}</a>
+                            <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ section.slug }}-slide{{ forloop.counter }}" data-menuanchor="{{ section.slug }}/{{ slide.slug }}" href="#{{ section.slug }}/{{ slide.slug }}">{{ slide.title }}</a>
                         </li>
 
                         {% endwith %}
@@ -102,7 +97,7 @@
                 {% for slide in section.get_children %}
                     {% with slide=slide.specific %}
 
-                    <div class="slide" data-anchor="slide{{ forloop.counter }}">
+                    <div class="slide" data-anchor="{{ slide.slug }}">
 
                         <div class="row slide_row">
 
@@ -156,118 +151,6 @@
 </div>
 <!-- End of page sections -->
 
-    {% comment %}
-
-    <h1 class="brand  d-none d-sm-block">{{ page.title }}</h1>
-            <h3 class="motto d-none d-sm-block">{{ page.motto }}</h3>
-            {{ page.body|richtext }}
-            <p>
-                <a href="#{{ page.get_children.0.title|slugify }}" class="btn btn-primary">Learn more</a>
-                <button class="btn btn-success demo_request_get_button">Request a demo</button>
-            </p>
-
-
-
-
-
-    <!-- Extra sections -->
-    {% for section in homesections %}
-        {% with section=section.specific %}
-
-        <!-- Section start -->
-        <div class="section">
-
-        {# SECTIONS WITH NO SLIDES #}
-
-        {% if not section.get_children %}
-
-            <div class="row page_row">
-
-            {% if section.align == 'cr' %}
-                <div class="col-md-5 offset-md-1">
-                    hola
-                    {{ section.gallery_images.first }}
-                </div>
-                <div class="col-md-5 offset-md-6">
-                    <h2 class="title">{{ section.title }}</h2>
-                    {{ section.body|richtext }}
-                </div>
-
-            {% endif %}
-
-            {% if section.align == 'cl' %}
-                <div class="col-md-5 offset-md-1 content_col">
-                    <div class="page_content">
-                        <h2 class="title">{{ section.title }}</h2>
-                        {{ section.body|richtext }}
-                    </div>
-                </div>
-                <div class="col-md-5 img_col">
-                    {% image section.gallery_images.first.image fill-600x700 as section_image %}
-                    <div class="page_image" style="background-image: url({{ section_image.url }});">Hello</div>
-                </div>
-            {% endif %}
-
-            </div>
-        {% endif %}
-
-        {#  SECTIONS WITH SLIDES #}
-
-        {% if section.get_children %}
-
-            <!-- Slide navigation -->
-            <div class="slide_menu d-none d-lg-block">
-                <ul class="nav justify-content-center" role="tablist">
-                {% for slide in section.get_children %}
-                    {% with slide=slide.specific %}
-
-                    <li class="nav-item color-galaxy">
-                        <a class="nav-link {% if forloop.first %}active{% endif %}" id="id_slide{{ forloop.counter }}" data-menuanchor="{{section.title|slugify}}/slide{{ forloop.counter }}" href="#{{section.title|slugify}}/slide{{ forloop.counter }}">{{ slide.title }}</a>
-                    </li>
-
-                    {% endwith %}
-                {% endfor %}
-                </ul>
-            </div>
-
-            <!-- Slides -->
-            {% for slide in section.get_children %}
-                {% with slide=slide.specific %}
-
-                <div class="slide" data-anchor="slide{{ forloop.counter }}">
-                    <div class="row">
-
-                    {% if slide.align == 'cr' %}
-                        <div class="col-md-5 offset-md-6">
-                    {% endif %}
-
-                    {% if slide.align == 'cl' %}
-                        <div class="col-md-5 offset-md-1">
-                    {% endif %}
-
-                            <h2 class="title">{{ slide.title }}</h2>
-                            {{ slide.body|richtext }}
-                        </div>
-                    </div>
-                </div>
-
-                {% endwith %}
-            {% endfor %}
-
-        {% endif %}
-
-        </div>
-        <!-- End of section -->
-
-
-        {% endwith %}
-    {% endfor %}
-    <!-- End of extra sections -->
-
-</div>
-<!-- End of page sections -->
-
-{% endcomment %}
 <!-- Modal -->
 <div class="modal fade" id="homeModalCenter" tabindex="-1" role="dialog" aria-labelledby="homeModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -288,7 +171,7 @@
 </div>
 
 <!-- Page data -->
-<div class="page_data" data-anchors="{% for item in page.home_sections.all %}{% with section=item.section %}{{ section.specific.title|slugify }}{% if not forloop.last %}, {% endif %}{% endwith %}{% endfor %}"></div>
+<div class="page_data" data-anchors="{% for item in page.home_sections.all %}{% with section=item.section.specific %}{{ section.slug }}{% if not forloop.last %}, {% endif %}{% endwith %}{% endfor %}"></div>
 
 {% endblock %}
 

@@ -45,7 +45,7 @@ $(document).ready(function() {
             var slideNum = nextSlideIndex + 1
 
             $('.nav .nav-link').removeClass('active');
-            $('#id_slide' + slideNum).addClass('active');
+            $('#' + anchorLink + '-slide' + slideNum).addClass('active');
         },
         scrollHorizontally: true,
         slidesNavigation: true,
