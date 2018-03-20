@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'config',
-    'clients'
+    'clients',
+    'sections',
+    'slides'
 ]
 
 MIDDLEWARE = [

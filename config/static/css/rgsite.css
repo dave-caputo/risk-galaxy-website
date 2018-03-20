@@ -90,8 +90,7 @@ body {
 /***** HOME SECTION *****/
 
 .home_image_div {
-    /* https://lyshastra.deviantart.com/art/Free-Space-Galaxy-Texture-435789256 */
-    background-image: url('../img/galaxy005.jpg');
+    /*background-image: url('../img/galaxy005.jpg');*/
     background-size:cover;
     position: absolute;
     width: 100%;
