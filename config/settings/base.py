@@ -148,3 +148,8 @@ WAGTAIL_SITE_NAME = "rgsite"
 BASE_URL = 'Risk Galaxy Site'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# For using debug variable in template (e.g. for Google analytics)...
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
