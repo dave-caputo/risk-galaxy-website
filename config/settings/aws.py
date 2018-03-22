@@ -13,8 +13,7 @@ DEBUG = False
 # NOTE! emails will be sent in production to last host in the list.
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'https://8zjzbkbkxk.execute-api.eu-west-2.amazonaws.com',
-    'www.riskgalaxy.com'
+    'riskgalaxy.com'
 ]
 
 # Postgres database configuration

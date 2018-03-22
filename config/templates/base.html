@@ -21,6 +21,23 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        </div>
+
+        {% if not debug %}
+
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116126741-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-116126741-1');
+        </script>
+        <!-- End of Google Analytics -->
+
+        {% endif %}
+
         {# Global stylesheets #}
         <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'css/countrySelect.min.css' %}?v={% staticv 'clients/static/css/countrySelect.min.css' %}">
@@ -42,23 +59,6 @@
             <!-- CONTENT START -->
             {% block content %}{% endblock %}
             <!-- END OF CONTENT -->
-        </div>
-
-        {% if not debug %}
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116126741-1"></script>
-
-
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-116126741-1');
-        </script>
-
-        {% endif %}
 
 
         {# Global javascript #}
