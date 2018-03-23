@@ -12,5 +12,10 @@ urlpatterns = [
     path(
         'demo-request-success/',
         views.ClientDemoRequestSuccessView.as_view(),
-        name='demo_request_success')
+        name='demo_request_success'),
+
+    path(
+        'list/',
+        views.ClientListView.as_view(),
+        name='list')
 ]

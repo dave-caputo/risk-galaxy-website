@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static staticv %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-right"><a href="/"><i class="fas fa-chevron-circle-left"></i> Back</a></p>
+            <h1 class="home_brand ">Risk Galaxy</h1>
+            <h2>Clients</h2>
+
+            <p>Total registered: {{ clients.count }}</p>
+
+            {% for client in clients %}
+                <h4>{{ client.name }}</h4>
+                <ul>
+                    <li>Created: {{ client.created }}</li>
+                    <li>Modified: {{ client.modified }}</li>
+                    <li>Phone: {{ client.phone }}</li>
+                    <li>Email: {{ client.email }}</li>
+                    <li>Country: {{ client.country }}</li>
+                    <li>Organisation: {{ client.org }}</li>
+                    <li>Organisation url: {{ org.url }}</li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

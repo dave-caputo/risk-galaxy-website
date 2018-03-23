@@ -1,4 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
+
+    <!-- Navbar brand -->
     <a class="navbar-brand ml-3 text-transparent" href="#home">Risk Galaxy</a>
 
     <!--Navbar toggler -->
@@ -20,6 +22,12 @@
                 </li>
                 {% endwith %}
             {% endfor %}
+
+            {% if page.login_url %}
+            <li class="nav-item">
+                <a class="btn btn-success login_btn" href="{{ page.login_url }}">Login</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

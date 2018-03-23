@@ -24,6 +24,9 @@
                 <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
                 <button class="btn btn-success demo_request_get_button">Request a demo</button>
             </p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'clients:list' %}">Registered clients</a>
+            {% endif %}
         </div>
     </div>
     <!-- End of home section -->
@@ -109,7 +112,7 @@
                             </div>
                             <div class="col-md-5 content_slide_right">
                                 <div class="page_content">
-                                    <h2 class="title text-galaxy">{{ section.title }}  &raquo; {{ slide.title }}</h2>
+                                    <h2 class="title text-galaxy">{{ slide.title }}</h2>
                                     {{ slide.body|richtext }}
                                 </div>
                             </div>
@@ -121,7 +124,7 @@
                             <!-- Left aligned slide -->
                             <div class="col-md-5 offset-md-1 content_slide_left">
                                 <div class="page_content">
-                                    <h2 class="title text-galaxy">{{ section.title }} &raquo; {{ slide.title }}</h2>
+                                    <h2 class="title text-galaxy">{{ slide.title }}</h2>
                                     {{ slide.body|richtext }}
                                 </div>
                             </div>

@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 
@@ -9,3 +10,5 @@ class Client(models.Model):
     org = models.CharField(blank=True, max_length=255,
                            verbose_name='organisation')
     org_url = models.URLField(blank=True, verbose_name='organisation url')
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now=True, null=True)
