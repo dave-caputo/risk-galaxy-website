@@ -241,6 +241,12 @@ body {
 /*    right: 3%;*/
 }
 
+/***** FORM *****/
+
+.country-select {
+    display: block;
+}
+
  /******* GENERAL ********/
 
 .text-galaxy {
@@ -258,6 +264,9 @@ body {
 .btn {
     border-radius: 40px !important;
 }
+
+
+
 
 
 /*.jumbotron {
@@ -332,9 +341,7 @@ body {
     top: 90% !important;
 }
 
-.country-select {
-    display: block;
-}*/
+*/
 
 /* Section container */
 

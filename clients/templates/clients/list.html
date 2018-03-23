@@ -18,7 +18,7 @@
                 <ul>
                     <li>Created: {{ client.created }}</li>
                     <li>Modified: {{ client.modified }}</li>
-                    <li>Phone: {{ client.phone }}</li>
+                    <li>Phone: +{{ client.phone_code|default:"(Not provided)" }} - {{ client.phone }}</li>
                     <li>Email: {{ client.email }}</li>
                     <li>Country: {{ client.country }}</li>
                     <li>Organisation: {{ client.org }}</li>

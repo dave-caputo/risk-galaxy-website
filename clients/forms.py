@@ -1,5 +1,6 @@
 from crispy_forms.bootstrap import PrependedText
 from crispy_forms.helper import FormHelper, Layout
+from crispy_forms.layout import Field
 
 from django import forms
 
@@ -13,20 +14,24 @@ class ClientForm(forms.ModelForm):
 
         # Set up crispy forms...
         self.helper = FormHelper()
+        self.helper.form_id = 'demo_request_form'
         self.helper.layout = Layout(
             'name',
             'email',
             'country',
-            PrependedText('phone', '+1'),
+            PrependedText('phone', '...'),
+            Field('phone_code', type='hidden'),
             'org',
             'org_url'
         )
-        self.helper.form_id = 'demo_request_form'
 
         # Set mandatory fields...
-        for i in ['name', 'email', 'country', 'phone', 'org']:
+        for i in ['name', 'email', 'country', 'phone', 'phone_code', 'org']:
             self.fields[i].required = True
 
     class Meta:
-        fields = ['name', 'email', 'country', 'phone', 'org', 'org_url']
+        fields = [
+            'name', 'email', 'country', 'phone', 'phone_code', 'org',
+            'org_url']
+
         model = Client

@@ -95,6 +95,33 @@ $('.navbar-collapse').on('hide.bs.collapse', function(event) {
 
 
 /*=================================================
+=            SET COUNTRY DIALLING CODE            =
+=================================================*/
+
+function getPhoneCode() {
+
+    var countryCode = $('#id_country', '#demo_request_form')
+        .countrySelect("getSelectedCountryData")
+        .iso2
+        .toUpperCase();
+
+    // Look up code... (note: phoneCodes is assigned in separate .js file)
+    return phoneCodes[countryCode]
+}
+
+$(document).on('input change', '#id_country', function(event) {
+
+    var phc = getPhoneCode()
+
+    // Update phone field prepend...
+    $('.input-group-text', '#div_id_phone').text('+' + phc);
+
+    // Update value of form phone code field...
+    $('#id_phone_code', '#demo_request_form').val(phc);
+});
+
+
+/*=================================================
 =             GET CLIENT INQUIRY FORM             =
 =================================================*/
 
@@ -124,7 +151,15 @@ $(document).on('click', '.demo_request_get_button', function(event) {
             $.fn.fullpage.setAllowScrolling(false);
 
             // Set pretty country-select field...
-            $("#id_country").countrySelect();
+            $('#id_country', '.modal-body').countrySelect();
+
+
+            var phc = getPhoneCode()
+            // Update phone field prepend...
+            $('.input-group-text', '#div_id_phone').text('+' + phc);
+
+            // Set value for phone code...
+            $('#id_phone_code').val(phc)
         })
 });
 
@@ -136,36 +171,12 @@ $(document).on('hide.bs.modal', function(event) {
 
 
 /*=================================================
-=            SET COUNTRY DIALLING CODE            =
-=================================================*/
-
-var phoneCode;
-
-$(document).on('input change', '#id_country', function(event) {
-    var code = $("#id_country").countrySelect("getSelectedCountryData")
-        .iso2
-        .toUpperCase();
-
-    phoneCode = phoneCodes[code]
-
-    $('.input-group-text').html('+' + phoneCode);
-
-
-});
-
-
-/*=================================================
 =            POST CLIENT INQUIRY FORM             =
 =================================================*/
 
 
 $(document).on('click', '.demo_request_post_btn', function(event) {
     event.preventDefault();
-
-    // Add country code to phone field...
-    var phoneNum = $('#id_phone').val();
-    var fullPhone = '+' + phoneCode + ' - ' + phoneNum;
-    $('#id_phone').val(fullPhone);
 
     $.ajax({
             url: '/clients/demo-request-create/',
@@ -174,24 +185,38 @@ $(document).on('click', '.demo_request_post_btn', function(event) {
         })
         .done(function(data) {
 
+            // $('#id_country', '#modal-body').countrySelect('destroy');
+
             // Display data...
             $('.modal-body').html(data);
 
-            // if no errors...
-            if (!$(data).find('.has-error').length &&
-                !$(data).find('.errorlist').length) {
+            // If no form is valid...
+            if (!$(data).find('.is-invalid').length) {
+                console.log('no errors found');
 
-                // hide button...
+                // Hide post button...
                 $('.demo_request_post_btn').addClass('d-none');
             }
-            // if errors...
+
+            // If form is invalid...
             else {
-                $('#id_phone').val(phoneNum);
+
+                // Store value of the country field and clear. This is
+                // needed to avoid errors when initialising
+                // countrySelect...
+                var selCountry = $('#id_country').val();
+                $('#id_country').val('');
+
+                // Setup country-select field with country flags...
+                $('#id_country').countrySelect();
+
+                // Select instance value...
+                $('#id_country').countrySelect('setCountry', selCountry);
+
+                // Insert phone code into phone field input prepend...
+                $('.input-group-text', '#div_id_phone')
+                    .text('+' + getPhoneCode());
             }
 
         })
-});
-
-$('.login_btn').click(function(event) {
-    $(this).button('loading');
 });
