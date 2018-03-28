@@ -16,10 +16,14 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 class SlidePage(Page):
     CL = 'cl'
     CR = 'cr'
+    FL = 'fl'
+    FR = 'fr'
 
     ALIGN_CHOICES = [
         (CL, 'center-left'),
-        (CR, 'center-right')
+        (CR, 'center-right'),
+        (FL, 'full-left'),
+        (FR, 'full-right')
     ]
 
     body = RichTextField(blank=True)

@@ -215,30 +215,36 @@ body {
     margin-right: 0%;*/
 }
 
-.img_slide_right {
-    /*position: relative;*/
+.slide_img_cr {
+    position: relative;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    max-width: 100%;
+    background-size:cover;
+    left: 2%;
+    background-color: rgba(117, 255, 112, 0.5);
+}
+
+
+
+.slide_img_cl {
     background-repeat: no-repeat;
     border-radius: 40px;
     background-size:cover;
-    left: 2%;
     /*background-color: rgba(117, 255, 112, 0.5);*/
 }
 
-.img_slide_left {
-    background-repeat: no-repeat;
-    border-radius: 40px;
-    background-size:cover;
-    /*background-color: rgba(117, 255, 112, 0.5);*/
+
+.slide_img_fr, .slide_img_fl {
+    max-width: 100%;
+    max-height: 90%;
 }
 
-.content_slide_right {
+
+
+.slide_content_cr {
     /*background-color: rgba(255, 254, 112, 0.5);*/
     left: 2%;
-}
-
-.content_slide_left {
-    /*background-color: rgba(255, 254, 112, 0.5);*/
-/*    right: 3%;*/
 }
 
 /***** FORM *****/

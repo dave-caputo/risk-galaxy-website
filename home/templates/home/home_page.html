@@ -33,7 +33,7 @@
 
     <!-- Extra sections -->
     {% for item in page.home_sections.all %}
-        {% with section=item.section %}
+        {% with section=item.section.specific %}
 
         <!-- Section start -->
         <div class="section">
@@ -41,7 +41,7 @@
 
             {{ section.section }}
 
-            {% if not section.get_children %}
+            {% if not section.section_slides.all %}
 
                 {# SECTIONS NOT CONTAINING SLIDES #}
 
@@ -83,8 +83,8 @@
                 <div class="slide_menu d-none d-lg-block">
                     <ul class="nav justify-content-center" role="tablist">
 
-                    {% for slide in section.get_children %}
-                        {% with slide=slide.specific %}
+                    {% for item in section.section_slides.all %}
+                        {% with slide=item.slide.specific %}
 
                         <li class="nav-item color-galaxy">
                             <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ section.slug }}-slide{{ forloop.counter }}" data-menuanchor="{{ section.slug }}/{{ slide.slug }}" href="#{{ section.slug }}/{{ slide.slug }}">{{ slide.title }}</a>
@@ -97,8 +97,8 @@
                 <!-- End of slide menu -->
 
                 <!-- Slides -->
-                {% for slide in section.get_children %}
-                    {% with slide=slide.specific %}
+                {% for item in section.section_slides.all %}
+                    {% with slide=item.slide.specific %}
 
                     <div class="slide" data-anchor="{{ slide.slug }}">
 
@@ -106,38 +106,89 @@
 
                         {% if slide.align == 'cr' %}
 
-                            <!-- right aligned slide -->
+                        <!-- Center-right aligned slide -->
+
+                            <!-- Slide image -->
                             {% image slide.gallery_images.first.image fill-700x800 as slide_image %}
-                            <div class="col-md-5 offset-md-1 img_slide_left" style="background-image: url({{ slide_image.url }});">
+                            <div class="col-md-5 offset-md-1 slide_img_cl" style="background-image: url({{ slide_image.url }});">
                             </div>
-                            <div class="col-md-5 content_slide_right">
-                                <div class="page_content">
-                                    <h2 class="title text-galaxy">{{ slide.title }}</h2>
-                                    {{ slide.body|richtext }}
-                                </div>
+                            <!-- End slide image -->
+
+                            <!-- Slide content -->
+                            <div class="col-md-5 slide_content_cr">
+                                <h2 class="title text-galaxy">{{ slide.title }}</h2>
+                                {{ slide.body|richtext }}
                             </div>
-                            <!-- End of right aligned slide -->
+                            <!-- End slide content -->
+
+                        <!-- End center-right aligned slide -->
+
+                        {% elif slide.align == 'cl' %}
+
+                        <!-- Center-left aligned slide -->
+
+                            <!-- Slide content -->
+                            <div class="col-md-5 offset-md-1 slide_content_cl">
+                                <h2 class="title text-galaxy">{{ slide.title }}</h2>
+                                {{ slide.body|richtext }}
+                            </div>
+                            <!-- End slide content -->
+
+                            <!-- Slide image -->
+                            {% image slide.gallery_images.first.image fill-700x800 as slide_image %}
+                            <div class="col-md-5 slide_img_cr" style="background-image: url({{ slide_image.url }});">
+                            </div>
+                            <!-- End slide image -->
+
+                        <!-- End center-left aligned slide -->
+
+                        {% elif slide.align == 'fl' %}
+
+                        <!-- Full-left aligned slide -->
+
+                            <!-- Slide content -->
+                            <div class="col-md-4 offset-md-1 slide_content_fl">
+                                <h2 class="title text-galaxy">{{ slide.title }}</h2>
+                                {{ slide.body|richtext }}
+                            </div>
+                            <!-- End slide content -->
+
+                            <!-- Slide image -->
+                            {% image slide.gallery_images.first.image original as slide_image %}
+                            <div class="col-md-6">
+                                <img class="slide_img_fr" src="{{ slide_image.url }}"/>
+                            </div>
+                            <!-- End slide image -->
+
+                        <!-- End full-left aligned slide -->
+
+                        {% elif slide.align == 'fr' %}
+
+                        <!-- Full-right aligned slide -->
+
+                            <!-- Slide image -->
+                            {% image slide.gallery_images.first.image original as slide_image %}
+                            <div class="col-md-6 offset-md-1">
+                                <img class="slide_img_fl" src="{{ slide_image.url }}"/>
+                            </div>
+                            <!-- End slide image -->
+
+                            <!-- Slide content -->
+                            <div class="col-md-4 slide_content_fl">
+                                <h2 class="title text-galaxy">{{ slide.title }}</h2>
+                                {{ slide.body|richtext }}
+                            </div>
+                            <!-- End slide content -->
+
+                        <!-- End full-right aligned slide -->
 
                         {% endif %}
 
-                        {% if slide.align == 'cl' %}
-                            <!-- Left aligned slide -->
-                            <div class="col-md-5 offset-md-1 content_slide_left">
-                                <div class="page_content">
-                                    <h2 class="title text-galaxy">{{ slide.title }}</h2>
-                                    {{ slide.body|richtext }}
-                                </div>
-                            </div>
-                            {% image slide.gallery_images.first.image fill-700x800 as slide_image %}
-                            <div class="col-md-5 img_slide_right" style="background-image: url({{ slide_image.url }});">
-                            </div>
-                            <!-- End of left aligned slide -->
-                        {% endif %}
-
-                    </div>
+                        </div>
                     </div>
 
                     {% endwith %}
+
                 {% endfor %}
                 <!-- End of slides -->
 
