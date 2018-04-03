@@ -16,21 +16,48 @@
     {% image page.gallery_images.first.image fill-2560x1580 as main_image %}
     <div class="section" id="section_home" style="background-image:url({{ main_image.url }}); background-size:cover;">
 
-        <div class="row align-items-center h-100">
-            <div class="col-sm-1"></div>
+        {# FULLSCREEN - hide on screens smaller than lg #}
+        <div class="home_fullscreen h-100 d-none d-lg-block">
 
-            <div class="col-sm-5 text-white p-4" style="background-color: rgba(37, 37, 167, 0.7);">
+            <div class="row align-items-center h-100">
 
-                <h1 class="home_brand">{{ page.title }}</h1>
-                <h3 class="home_motto">{{ page.motto }}</h3>
-                {{ page.body|richtext }}
-                <h4 class="text-right">
-                    <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
-                    <button class="btn btn-success demo_request_get_button">Request a demo</button>
-                </h4>
-                {% if user.is_authenticated %}
-                <h5><a href="{% url 'clients:list' %}">Registered clients <i class="fas fa-arrow-alt-circle-right"></i></a></h5>
-                {% endif %}
+                <div class="col-sm-1"></div>
+
+                <div class="col-sm-5 text-white p-4" style="background-color: rgba(37, 37, 167, 0.7);">
+
+                    <h1 class="home_brand">{{ page.title }}</h1>
+                    <h3 class="home_motto">{{ page.motto }}</h3>
+                    {{ page.body|richtext }}
+                    <h4 class="text-right">
+                        <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
+                        <button class="btn btn-success demo_request_get_button">Request a demo</button>
+                    </h4>
+                    {% if user.is_authenticated %}
+                    <h5><a href="{% url 'clients:list' %}">Registered clients <i class="fas fa-arrow-alt-circle-right"></i></a></h5>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        {# RESPONSIVE - hide on screens wider than lg #}
+        <div class="home_responsive h-100 d-lg-none">
+
+            <div class="row" style="padding-top: 55px;">
+
+                <div class="col-sm-5 text-white p-4" style="background-color: rgba(37, 37, 167, 0.7);">
+
+                    <h1 class="home_brand">{{ page.title }}</h1>
+                    <h4 class="home_motto">{{ page.motto }}</h4>
+                    {{ page.summary|richtext }}
+                    <h4 class="mt-4">
+                        <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
+                        <button class="btn btn-success demo_request_get_button">Request a demo</button>
+                    </h4>
+                    {# {% if user.is_authenticated %} #}
+                    {# <h5><a href="{% url 'clients:list' %}">Registered clients <i class="fas fa-arrow-alt-circle-right"></i></a></h5> #}
+                    {# {% endif %} #}
+                </div>
             </div>
         </div>
 
