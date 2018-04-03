@@ -27,6 +27,7 @@ body {
 .navbar-nav .nav-link {
     background-color: #eaeafa;
     border-radius: 40px !important;
+    margin-left: 5px;
     margin-right: 5px;
     color: #4343d6;
     min-width: 120px;
@@ -35,7 +36,10 @@ body {
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.active:hover {
     color: white;
+    border-width: 1px;
     background-color: #4343d6 !important;
+    border-style: 2px solid;
+    border-color: white !important;
 }
 
 .navbar-nav .nav-link:hover {
@@ -45,87 +49,39 @@ body {
 .navbar-collapse.show>ul>.nav-item,
 .navbar-collapse.collapsing>ul>.nav-item
  {
-    margin-top: 10px;
-    margin-bottom: 10px !important;
+    margin-top: 5px;
+    margin-bottom: 5px !important;
+}
+
+.navbar-collapse.show .nav-link,
+.navbar-collapse.collapsing .nav-link
+ {
+    border: 1px solid #d5d5f6 !important;
 }
 
 .navbar-collapse.show,
 .navbar-collapse.collapsing {
     padding: 10px;
-    /*background-color: rgba(67, 67, 214, 0.5);*/
-    background-color: rgba(255, 255, 255, 0.9);
-    top: -50px;
+    background-color: rgba(41, 41, 188, 0.95);
+    top: -70px;
     margin-left:-20px;
     margin-right:-20px;
     padding-top: 30px;
     padding-bottom: 100% !important;
 }
 
+.login_btn {
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: white;
+}
+
 
 /***** HOME SECTION *****/
 
-.home_content_div {
-    /*position: relative;*/
-    /*background-color: rgba(37, 37, 167, 0.7);*/
-    /*width: 50%;*/
-    /*height:100%;*/
-    /*padding: 20px;*/
-    /*color: white;*/
-    /*top: 50%;*/
-    /*overflow: !important;*/
-}
-
 .home_brand {
     font-family: 'Audiowide', cursive;
-}
-
-/***** EXTRA SECTIONS *****/
-
-.section {
-    /*padding-top: 10%;*/
-}
-
-
-.section_row {
-    /*background-color: rgba(255, 153, 204, 0.2);*/
-    /*position: absolute;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*padding-top: 10%;*/
-    /*padding-bottom: 5%;*/
-    /*margin-left: 0%;*/
-    /*margin-right: 0%;*/
-}
-
-.content_col_right {
-    /*background-color: rgba(255, 254, 112, 0.5);*/
-    /*left:53%;*/
-    /*left: 3%;*/
-}
-
-.content_col_left {
-    /*background-color: rgba(255, 254, 112, 0.5);*/
-    /*right: 3%;*/
-}
-
-.img_col_right {
-    /*position: absolute;*/
-    /*background-color: rgba(117, 255, 112, 0.5);*/
-    /*right: 0%;*/
-    /*height: 100%;*/
-    /*margin-top: -10%;*/
-    /*margin-bottom: -5%;*/
-    /*background-size:cover;*/
-}
-
-.img_col_left {
-    /*position: absolute;*/
-    /*background-color: rgba(117, 255, 112, 0.5);*/
-    /*left: 0%;*/
-    /*height: 100%;*/
-    /*margin-top: -10%;*/
-    /*margin-bottom: -5%;*/
-    /*background-size:cover;*/
 }
 
 /***** SECTION NAVIGATION *****/
@@ -199,31 +155,6 @@ body {
 
 /***** SLIDES *****/
 
-.slide_row {
-    /*background-color: rgba(255, 153, 204, 0.2);*/
-    /*height: 90%;*/
-    /*width: 100%;*/
-/*    position: absolute;
-    height: 100%;
-    width: 100%;
-    padding-top: 10%;
-    padding-bottom: 5%;
-    margin-left: 0%;
-    margin-right: 0%;*/
-}
-
-/*.slide_img_cr {
-    position: relative;
-    background-repeat: no-repeat;
-    border-radius: 40px;
-    max-width: 100%;
-    background-size:cover;
-    left: 2%;
-    background-color: rgba(117, 255, 112, 0.5);
-}*/
-
-
-
 .slide_img_cl {
     /*background-repeat: no-repeat;*/
     /*border-radius: 40px;*/
@@ -267,113 +198,3 @@ body {
 .btn {
     border-radius: 40px !important;
 }
-
-
-
-
-
-/*.jumbotron {
-    background-color: rgba(67, 67, 214, 0.8);
-    color: white;
-    max-height: 100%;
-}*/
-
-
-/***** OTHER *****/
-/*.nav-pills .nav-link {
-    border-radius: 40px !important;
-}
-
-
-
-.nav-collapse {
-    position: absolute !important;
-    bottom: 20px !important;
-}
-
-
-
-
-/* Navbar navigation */
-
-
-
-/* Slide navigation */
-
-
-
-
-/*.title {
-    color: #4343d6;
-}*/
-
-/*.fp-controlArrow.fp-next {
-    right: 15px;
-    border-width: 15px 0 15px 15px;
-    border-color: transparent transparent transparent #4343d6;
-}
-
-.fp-controlArrow.fp-prev {
-    left: 15px;
-    width: 0;
-    border-width: 15px 15px 15px 0;
-    border-color: transparent #4343d6 transparent transparent;
-}*/
-
-/*.bg-jumbotron {
-    background-color: rgba(67, 67, 214, 0.6);
-    padding-top: 15px;
-    padding-bottom: 5px;
-    color: white;
-}*/
-
-/*.dismiss_nav {
-    position: relative;
-    top: -27px;
-    left: 14px;
-}*/
-
-/* SLIDE MENU */
-
-/*
-}
-
-
-
-.fp-slidesNav {
-    top: 90% !important;
-}
-
-*/
-
-/* Section container */
-
-/*.fp-section {
-    padding-top: 70px;
-    padding-left: 10px;
-    padding-right: 10px;
-}*/
-
-/*.page_content {
-    position: relative;
-    top: 30%;
-}*/
-
-/*.img_col {
-    position: absolute;
-    right: 0px;
-    top: 100%;
-}
-
-.page_image {
-
-    background-color: gray;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right;
-
-}*/
-
-
-
-

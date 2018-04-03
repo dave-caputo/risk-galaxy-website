@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    $('.home-item').hide();
-
     $('body').show();
 
     $(document).trigger('getPhoneCodes');
@@ -14,18 +12,13 @@ $(document).ready(function() {
             if (index != 1) {
 
                 $('.navbar-brand').removeClass('text-transparent');
-                $('.login_btn')
-                    .removeClass('btn-success')
-                    .addClass('btn-outline-success');
                 $('.navbar-toggler svg')
                     .removeClass('text-white')
                     .addClass('text-galaxy');
 
             } else {
 
-                $('.home-item').fadeOut();
                 $('#fp-nav ul li a span').addClass('bg-white');
-
             }
             $('.navbar-collapse').collapse('hide');
         },
@@ -42,16 +35,11 @@ $(document).ready(function() {
 
                 $('.navbar-brand').addClass('text-transparent');
 
-                $('.login_btn')
-                    .removeClass('btn-outline-success')
-                    .addClass('btn-success');
-
                 $('.navbar-toggler svg')
                     .removeClass('text-galaxy')
                     .addClass('text-white');
             } else {
 
-                $('.home-item').fadeIn();
                 $('#fp-nav ul li a span').removeClass('bg-white');
             }
         },
@@ -67,11 +55,6 @@ $(document).ready(function() {
         slidesNavigation: true,
         slidesNavPosition: 'bottom',
         verticalCentered: false,
-
-        // Responsive settings...
-        // responsiveWidth: 768,
-        // responsiveHeight: 637,
-        // responsiveSlides: true
     });
 
     $('.fp-next').html('<i class="fas fa-chevron-circle-right fa-2x"></i>')

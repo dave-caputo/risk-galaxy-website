@@ -47,16 +47,16 @@
 
                 <div class="col-sm-5 text-white p-4" style="background-color: rgba(37, 37, 167, 0.7);">
 
-                    <h1 class="home_brand">{{ page.title }}</h1>
-                    <h4 class="home_motto">{{ page.motto }}</h4>
+                    <h1 class="home_brand text-center">{{ page.title }}</h1>
+                    <h4 class="home_motto text-center">{{ page.motto }}</h4>
                     {{ page.summary|richtext }}
-                    <h4 class="mt-4">
+                    <h4 class="mt-4 text-center">
                         <a href="#{{ page.home_sections.first.section.slug }}" class="btn btn-primary mr-1">Learn more</a>
                         <button class="btn btn-success demo_request_get_button">Request a demo</button>
                     </h4>
-                    {# {% if user.is_authenticated %} #}
-                    {# <h5><a href="{% url 'clients:list' %}">Registered clients <i class="fas fa-arrow-alt-circle-right"></i></a></h5> #}
-                    {# {% endif %} #}
+                    {% if user.is_authenticated %}
+                    <h5><a href="{% url 'clients:list' %}">Registered clients <i class="fas fa-arrow-alt-circle-right"></i></a></h5>
+                    {% endif %}
                 </div>
             </div>
         </div>

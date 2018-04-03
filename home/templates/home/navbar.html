@@ -10,8 +10,8 @@
 
     <!-- Navbar buttons -->
     <div class="collapse navbar-collapse position-relative" id="navbarToggleMenu">
-        <ul class="navbar-nav ml-auto nav-pills mr-3">
-            <li class="text-right mt-1 d-lg-none"><button class="btn btn-link dismiss_nav text-galaxy"><i class="fas fa-window-close fa-2x"></i></button></li>
+        <ul class="navbar-nav ml-auto nav-pills text-center">
+            <li class="text-right d-lg-none"><button class="btn btn-link dismiss_nav text-white"><i class="fas fa-window-close fa-2x"></i></button></li>
             <li class="nav-item home-item">
                 <a class="nav-link" data-menuanchor="home" href="#home">Home</a>
             </li>
@@ -25,7 +25,7 @@
 
             {% if page.login_url %}
             <li class="nav-item">
-                <a class="btn btn-success login_btn" href="{{ page.login_url }}">Login</a>
+                <a class="btn btn-outline-success login_btn" href="{{ page.login_url }}">Login</a>
             </li>
             {% endif %}
         </ul>
