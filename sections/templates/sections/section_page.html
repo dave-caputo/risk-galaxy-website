@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}template-sectionpage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col-md-6">
+                <h6 class="home_brand text-galaxy">Risk Galaxy</h6>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-light" href="/#{{ page.slug }}">Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-galaxy">{{ page.title }}</h1>
+                {{ page.body|richtext }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,38 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!-- Slide menu -->
+<div class="slide_menu d-none d-lg-block">
+    <ul class="nav justify-content-center" role="tablist">
+
+    {% for item in section.section_slides.all %}{% with slide=item.slide.specific %}
+
+        <li class="nav-item color-galaxy">
+            <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ section.slug }}-slide{{ forloop.counter }}" data-menuanchor="{{ section.slug }}/{{ slide.slug }}" href="#{{ section.slug }}/{{ slide.slug }}">{{ slide.title }}</a>
+        </li>
+
+    {% endwith %}{% endfor %}
+    </ul>
+</div>
+<!-- End of slide menu -->
+
+<!-- Slides -->
+{% for item in section.section_slides.all %}{% with slide=item.slide.specific %}
+
+    <!-- Slide -->
+    <div class="slide" data-anchor="{{ slide.slug }}">
+
+        {# hide on screens wider than lg #}
+        <div class="slide_responsive h-100 d-lg-none">
+            {% include 'home/slides_responsive.html' %}
+        </div>
+
+        {# hide on screens smaller than lg #}
+        <div class="slide_fullscreen h-100 d-none d-lg-block">
+            {% include 'home/slides_fullscreen.html' %}
+        </div>
+
+    </div>
+    <!-- End slide -->
+
+{% endwith %}{% endfor %}
+<!-- End of slides -->

@@ -28,6 +28,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'config',
+    'clients',
+    'sections',
+    'slides',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -51,12 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'crispy_forms',
-
-    'config',
-    'clients',
-    'sections',
-    'slides'
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

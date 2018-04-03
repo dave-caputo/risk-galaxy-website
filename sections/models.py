@@ -24,6 +24,7 @@ class SectionPage(Page):
     ]
 
     body = RichTextField(blank=True)
+    summary = RichTextField(blank=True)
     align = models.CharField(max_length=2,
                              choices=ALIGN_CHOICES,
                              default=CL)
@@ -31,6 +32,7 @@ class SectionPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('align'),
         FieldPanel('body', classname='full'),
+        FieldPanel('summary', classname='full'),
         InlinePanel('gallery_images', label="Gallery images"),
         InlinePanel('section_slides', label="Section slides"),
     ]

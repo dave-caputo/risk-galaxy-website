@@ -16,6 +16,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class HomePage(Page):
     body = RichTextField(blank=True)
+    summary = RichTextField(blank=True)
     motto = models.CharField(max_length=255, blank=True)
     login_url = models.URLField(blank=True)
 
@@ -23,6 +24,7 @@ class HomePage(Page):
         FieldPanel('motto'),
         FieldPanel('login_url'),
         FieldPanel('body', classname="full"),
+        FieldPanel('summary', classname="full"),
         InlinePanel('gallery_images', label="Gallery images"),
         InlinePanel('home_sections', label="Home sections"),
     ]

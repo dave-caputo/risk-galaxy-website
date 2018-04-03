@@ -67,6 +67,11 @@ $(document).ready(function() {
         slidesNavigation: true,
         slidesNavPosition: 'bottom',
         verticalCentered: false,
+
+        // Responsive settings...
+        // responsiveWidth: 768,
+        // responsiveHeight: 637,
+        // responsiveSlides: true
     });
 
     $('.fp-next').html('<i class="fas fa-chevron-circle-right fa-2x"></i>')

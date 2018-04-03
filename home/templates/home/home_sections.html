@@ -1,0 +1,65 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{# RESPONSIVE - hide on screens wider than lg #}
+<div class="slide_responsive h-100 d-lg-none">
+    <!-- Section row -->
+    <div class="row h-100 pt-5 pb-5">
+
+        {% if section.align == 'cr' %}
+
+            <div class="col-md-5 offset-md-1 pl-4 pr-4">
+                {% image section.gallery_images.first.image original as section_image %}
+                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}"/>
+            </div>
+            <div class="col-md-5 pl-4 pr-4">
+                <h2 class="title text-galaxy">{{ section.title }}</h2>
+                {{ section.summary|richtext }}
+                <p><a href="{{ section.url }}">Find out more</a></p>
+            </div>
+
+        {% elif section.align == 'cl' %}
+
+            <div class="col-md-5 offset-md-1 pl-4 pr-4">
+                <h2 class="title text-galaxy">{{ section.title }}</h2>
+                {{ section.summary|richtext }}
+                <p><a href="{{ section.url }}">Find out more</a></p>
+            </div>
+            <div class="col-md-5 pl-4 pr-4">
+                {% image section.gallery_images.first.image original as section_image %}
+                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}" />
+            </div>
+
+        {% endif %}
+
+    </div><!-- End section row -->
+</div>
+
+{# FULLSCREEN - hide on screens smaller than lg #}
+<div class="slide_fullscreen h-100 d-none d-lg-block">
+    <!-- Section row -->
+    <div class="row align-items-center h-100">
+
+        {% if section.align == 'cr' %}
+
+            {% image section.gallery_images.first.image fill-700x800 as section_image %}
+            <div class="col-md-6 h-100" style="background-image: url({{ section_image.url }}); background-size: cover;">
+            </div>
+            <div class="col-md-5 pl-4 pr-4">
+                <h2 class="title text-galaxy">{{ section.title }}</h2>
+                {{ section.body|richtext }}
+            </div>
+
+        {% elif section.align == 'cl' %}
+
+            <div class="col-md-5 offset-md-1 pl-4 pr-4">
+                <h2 class="title text-galaxy">{{ section.title }}</h2>
+                {{ section.body|richtext }}
+            </div>
+
+            {% image section.gallery_images.first.image fill-700x800 as section_image %}
+            <div class="col-md-6 h-100" style="background-image: url({{ section_image.url }}); background-size: cover;">
+            </div>
+
+        {% endif %}
+    </div><!-- End section row -->
+</div>
