@@ -128,7 +128,7 @@ body {
     cursor: pointer;
     /*background-color: rgba(255, 254, 112, 0.5);*/
     position: absolute;
-    top: 50%;
+    top: 55%;
     color: #c0c0f1;
     z-index: 2;
 }
@@ -140,7 +140,6 @@ body {
 }
 
 .fp-controlArrow.fp-prev {
-    /*left: 100px;*/
     border-width: 0;
     border-color: transparent;
 }

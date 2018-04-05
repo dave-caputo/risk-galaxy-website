@@ -52,7 +52,6 @@ $(document).ready(function() {
             $('#' + anchorLink + '-slide' + slideNum).addClass('active');
         },
         scrollHorizontally: true,
-        slidesNavigation: true,
         slidesNavPosition: 'bottom',
         verticalCentered: false,
     });

@@ -9,12 +9,13 @@
                 <h6 class="home_brand text-galaxy">Risk Galaxy</h6>
             </div>
             <div class="col-md-6 text-right">
-                <a class="btn btn-light" href="/#{{ page.slug }}">Back</a>
+                <a class="btn btn-light" href="/#{{ page.get_parent.slug }}/{{ page.slug }}">Back</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-galaxy">{{ page.title }}</h3>
+                <h3 class="text-galaxy">{{ page.get_parent.title }}</h3>
+                <h3 class="text-galaxy"><small>{{ page.title }}</small></h3>
                 {{ page.body|richtext }}
             </div>
         </div>

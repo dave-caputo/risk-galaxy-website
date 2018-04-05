@@ -5,28 +5,28 @@
     <!-- Section row -->
     <div class="row h-100 pt-5 pb-5">
 
-        {% if section.align == 'cr' %}
+        {% if section.align == 'cl' %}
 
-            <div class="col-md-5 offset-md-1 pl-4 pr-4">
-                {% image section.gallery_images.first.image original as section_image %}
-                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}"/>
-            </div>
-            <div class="col-md-5 pl-4 pr-4">
-                <h2 class="title text-galaxy">{{ section.title }}</h2>
+            <div class="col-md-5 offset-md-1 pl-5 pr-5 h-50">
+                <h3 class="title text-galaxy"><small>{{ section.title }}</small></h3>
                 {{ section.summary|richtext }}
                 <p><a href="{{ section.url }}">Find out more</a></p>
             </div>
-
-        {% elif section.align == 'cl' %}
-
-            <div class="col-md-5 offset-md-1 pl-4 pr-4">
-                <h2 class="title text-galaxy">{{ section.title }}</h2>
-                {{ section.summary|richtext }}
-                <p><a href="{{ section.url }}">Find out more</a></p>
-            </div>
-            <div class="col-md-5 pl-4 pr-4">
+            <div class="col-md-5 pl-4 pr-4 h-50">
                 {% image section.gallery_images.first.image original as section_image %}
                 <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}" />
+            </div>
+
+        {% elif section.align == 'cr' %}
+
+            <div class="col-md-5 offset-md-1 pl-4 pr-4" style="height:50%;">
+                {% image section.gallery_images.first.image original as section_image %}
+                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}" width="100%"/>
+            </div>
+            <div class="col-md-5 pl-5 pr-5"  style="height:50%;">
+                <h3 class="title text-galaxy"><small>{{ section.title }}</small></h3>
+                {{ section.summary|richtext }}
+                <p><a href="{{ section.url }}">Find out more</a></p>
             </div>
 
         {% endif %}
