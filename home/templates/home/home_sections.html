@@ -12,18 +12,20 @@
                 {{ section.summary|richtext }}
                 <p><a href="{{ section.url }}">Find out more</a></p>
             </div>
-            <div class="col-md-5 pl-4 pr-4 h-50">
-                {% image section.gallery_images.first.image original as section_image %}
-                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}" />
+
+            <div class="col-md-5 d-flex pl-4 pr-4 h-50">
+                {% image section.gallery_images.first.image width-300 as section_image %}
+                <img class="img-fluid align-items-center" style="border-radius: 40px;" src="{{ section_image.url }}"/>
             </div>
 
         {% elif section.align == 'cr' %}
 
-            <div class="col-md-5 offset-md-1 pl-4 pr-4" style="height:50%;">
-                {% image section.gallery_images.first.image original as section_image %}
-                <img class="img-fluid" style="border-radius: 40px;" src="{{ section_image.url }}" width="100%"/>
+            <div class="col-md-5 offset-md-1 d-flex pl-4 pr-4 h-50">
+                {% image section.gallery_images.first.image width-300 as section_image %}
+                <img class="img-fluid align-items-center" style="border-radius: 40px;" src="{{ section_image.url }}" />
             </div>
-            <div class="col-md-5 pl-5 pr-5"  style="height:50%;">
+
+            <div class="col-md-5 pt-3 pl-5 pr-5 h-50">
                 <h3 class="title text-galaxy"><small>{{ section.title }}</small></h3>
                 {{ section.summary|richtext }}
                 <p><a href="{{ section.url }}">Find out more</a></p>

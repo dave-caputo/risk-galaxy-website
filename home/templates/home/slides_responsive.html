@@ -6,28 +6,34 @@
 {% if slide.align == 'cl' %}
 
     <!-- Slide content -->
-    <div class="col-md-5 offset-md-1 pl-5 pr-5" style="height:55%;">
+    <div class="col-md-5 offset-md-1 pl-5 pr-5" style="height:50%;">
         <h3 class="title text-galaxy"><small>{{ section.title }}: {{ slide.title }}</small></h3>
         {{ slide.summary|richtext }}
         <p><a href="{{ slide.url }}">Find out more</a></p>
     </div>
     <!-- End slide content -->
 
+    <!-- Separator -->
+    <div class="col-md-1" style="height:5%;"></div>
+
     <!-- Slide image -->
-    <div class="col-md-5 pl-4 pr-4 mt-2"  style="height:45%;">
+    <div class="col-md-5 d-flex pl-4 pr-4 mt-2"  style="height:45%;">
         {% image slide.gallery_images.first.image fill-300x200 as slide_image %}
-        <img  class="img-fluid" style="border-radius:40px;" src="{{ slide_image.url }}" width="100%"/>
+        <img  class="img-fluid align-self-center" style="border-radius:40px;" src="{{ slide_image.url }}" width="100%"/>
     </div>
     <!-- End slide image -->
 
 {% elif slide.align == 'cr' %}
 
     <!-- Slide image -->
-    <div class="col-md-5 offset-md-1 pl-4 pr-4" style="height:55%;">
-        {% image slide.gallery_images.first.image fill-300x190 as slide_image %}
-        <img  class="img-fluid" style="border-radius:40px;" src="{{ slide_image.url }}" width="100%"/>
+    <div class="col-md-5 offset-md-1 d-flex pl-4 pr-4" style="height:50%;">
+        {% image slide.gallery_images.first.image fill-300x200 as slide_image %}
+        <img  class="img-fluid align-self-center" style="border-radius:40px;" src="{{ slide_image.url }}" width="100%"/>
     </div>
     <!-- End slide image -->
+
+    <!-- Separator -->
+    <div class="col-md-1" style="height:5%;"></div>
 
     <!-- Slide content -->
     <div class="col-md-5 pl-5 pr-5" style="height:45%;">
@@ -40,28 +46,35 @@
 {% elif slide.align == 'fl' %}
 
     <!-- Slide content -->
-    <div class="col-md-4 offset-md-1 pl-5 pr-5"  style="height:55%;">
+    <div class="col-md-4 offset-md-1 pl-5 pr-5"  style="height:50%;">
         <h3 class="title text-galaxy"><small>{{ section.title }}: {{ slide.title }}</small></h3>
         {{ slide.summary|richtext }}
         <p><a href="{{ slide.url }}">Find out more</a></p>
     </div>
     <!-- End slide content -->
 
+    <!-- Separator -->
+    <div class="col-md-1" style="height:5%;"></div>
+
     <!-- Slide image -->
-    <div class="col-md-6 pl-4 pr-4 mt-2" style="height:45%;">
+    <div class="col-md-6 d-flex pl-4 pr-4 mt-2" style="height:45%;">
         {% image slide.gallery_images.first.image width-300 as slide_image %}
-        <img  class="img-fluid" src="{{ slide_image.url }}" width="100%"/>
+        <img  class="img-fluid align-self-center" src="{{ slide_image.url }}" width="100%"/>
     </div>
     <!-- End slide image -->
 
 {% elif slide.align == 'fr' %}
 
     <!-- Slide image -->
-    <div class="col-md-6 offset-md-1 pl-4 pr-4" style="height:55%;">
+    <div class="col-md-6 offset-md-1 d-flex pl-4 pr-4" style="height:50%;">
         {% image slide.gallery_images.first.image width-300 as slide_image %}
-        <img  class="img-fluid" src="{{ slide_image.url }}"/>
+        <img class="img-fluid align-self-center" src="{{ slide_image.url }}" width="100%"/>
     </div>
     <!-- End slide image -->
+
+    <!-- Separator -->
+    <div class="col-md-1" style="height:5%;"></div>
+
 
     <!-- Slide content -->
     <div class="col-md-4 pl-5 pr-5" style="height:45%;">
