@@ -8,4 +8,4 @@ This project is now live at <https://riskgalaxy.com>.
 
 ## Additional info
 
-For the front end, the project uses the library <fullpage.js> which is great for a modern site in a slideshow style.
+For the front end, the project uses the library [fullpage.js](https://alvarotrigo.com/fullPage) which is great for a modern site presented in a slideshow style.
