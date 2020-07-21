@@ -39,7 +39,7 @@ tqdm==4.19.1
 troposphere==2.2.0
 Unidecode==0.4.21
 urllib3==1.22
-wagtail==2.0
+wagtail==2.7.4
 webencodings==0.5.1
 Werkzeug==0.12
 Willow==1.1
